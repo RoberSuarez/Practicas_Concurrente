@@ -1,6 +1,7 @@
 
 public class Entero {
 	private volatile int minum;
+	
 	Entero(){
 		this.minum = 0;
 	}
@@ -15,5 +16,9 @@ public class Entero {
 	
 	public int getNum() {
 		return minum;
+	}
+	
+	public void setNum(int n) {
+		minum = n;
 	}
 }
