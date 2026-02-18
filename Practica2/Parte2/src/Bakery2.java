@@ -1,12 +1,14 @@
 
 public class Bakery2 extends Locks{
 
-	private int[] turnos;
+	private Entero[] turnos;
 	
 	public Bakery2() {
-		turnos = new int[2];
-		turnos[0] = 0;
-		turnos[1] = 0;
+		turnos = new Entero[2];
+		turnos[0] = new Entero();
+		turnos[0].setNum(0);
+		turnos[1] = new Entero();
+		turnos[0].setNum(0);
 	}
 	
 	public boolean decide(int a, int b, int c, int d) {
@@ -15,14 +17,14 @@ public class Bakery2 extends Locks{
 	
 	@Override
 	public void lock(int id) {
-		turnos[id-1] = 1;
-		turnos[id-1] = turnos[id%2] + 1;
-		while(turnos[id%2] != 0 && decide(turnos[id-1], id-1, turnos[id%2], id%2));
+		turnos[id-1].setNum(1);
+		turnos[id-1].setNum(turnos[id%2].getNum() + 1);
+		while(turnos[id%2].getNum() != 0 && decide(turnos[id-1].getNum(), id-1, turnos[id%2].getNum(), id%2));
 	}
 
 	@Override
 	public void unlock(int id) {
-		turnos[id-1]=0;	
+		turnos[id-1].setNum(0);	
 	}
 
 	

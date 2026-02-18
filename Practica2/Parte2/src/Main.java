@@ -5,12 +5,13 @@ public class Main {
 	
 	public static void main(String[] args) {
 		Entero entero = new Entero();
-		Locks algoritmo = new LockBakery(M);
+		int totalHilos = 2*M;
+		Locks algoritmo = new LockRompeEmpate(totalHilos) ; //Esto es lo unico que necesitaremos cambiar para nuestros algoritmos
 		HiloInc[] incrementales = new HiloInc[M];
 		HiloDec[] decrementales = new HiloDec[M];
 		for(int i = 0; i < M; i++) {
 			incrementales[i] = new HiloInc(entero, M, i, algoritmo);
-			decrementales[i] = new HiloDec(entero, M, i, algoritmo);
+			decrementales[i] = new HiloDec(entero, M, M+ i, algoritmo);
 			incrementales[i].start();
 			decrementales[i].start();
 		}
@@ -26,7 +27,8 @@ public class Main {
 		System.out.println("El resultado final es: " + entero.getNum());
 	}
 
-	/*METODOS PARA 2 PROCESOS
+	//METODOS PARA 2 PROCESOS
+/*
 	public static void main(String[] args) {
 		Entero entero = new Entero();
 		Locks algoritmo = new Bakery2();
@@ -42,6 +44,5 @@ public class Main {
 		}
 		System.out.println("El resultado final es: " + entero.getNum());
 	}
-	*/
-
+*/
 }
